@@ -8,29 +8,35 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name = "Produto")
+@Table(name = "produto")
 public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
-	private Integer id;
+	private Long id;
 	
 	@Column(name = "descricao", nullable = false, length = 200)
 	private String descricao;
 	
 	@Column(name = "preco", nullable = false, precision = 2)
 	private Double preco;
+	
+	public Produto(String descricao, Double preco) {
+		super();
+		this.descricao = descricao;
+		this.preco = preco;
+	}
 
 	public Produto() {
 
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public Produto setId(Integer id) {
+	public Produto setId(Long id) {
 		this.id = id;
 		return this;
 	}
@@ -61,21 +67,4 @@ public class Produto {
 		return result;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Produto other = (Produto) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
-	
 }
