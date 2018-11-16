@@ -1,5 +1,7 @@
 package com.trabalho.dweb.estoque.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,10 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Autowired
 	private ProdutoRepository produtoRepository;
 
-//	@Override
-//	public List<Produto> getTodosProdutos() {
-//		return produtoRepository.findAll();
-//	}
+	@Override
+	public List<Produto> getTodosProdutos() {
+		return produtoRepository.findAll();
+	}
 
 	@Override
 	public Produto cadastrarProduto(Produto produto) {
