@@ -22,16 +22,9 @@
 			<label>Usuário:</label> <br>
 			<input type="text" name="login"> <br> <br>
 			<label>Senha:</label> <br>
-			<input type="text" name="senha"> <br> <br>
+			<input type="password" name="senha"> <br> <br>
 			<button type="submit" class="btn btn-primary">Logar</button>
 		</form>
 	</center>
-	<!-- <form action='/index/salvar' method='post'>
-		<label>Descrição:</label> <br>
-		<input type="text" name="descricao"> <br> <br>
-		<label>Preço:</label> <br>
-		<input type="text" name="preco"> <br> <br>
-		<button type="submit">Enviar</button>
-	</form> <br> <br>  -->
 </body>
 </html>

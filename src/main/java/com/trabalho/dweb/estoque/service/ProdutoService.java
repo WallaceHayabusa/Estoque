@@ -10,9 +10,9 @@ public interface ProdutoService {
 	
 	public Produto cadastrarProduto(Produto produto);
 
-//	public Produto getProdutoPorId(Long produtoId);
-//	
-//	public Produto atualizarProduto(Long produtoId, Produto produtoAtualizado);
-//	
-//	public void removerProduto(Long produtoId);
+	public Produto getProdutoPorId(Long produtoId);
+	
+	public Produto atualizarProduto(Long produtoId, Produto produtoAtualizado);
+	
+	public void removerProduto(Long produtoId);
 }

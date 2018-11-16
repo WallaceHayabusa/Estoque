@@ -45,6 +45,16 @@ public class IndexController {
 		return "dashboard";
 	}
 	
+	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
+	public String cadastro(Model model) {
+		
+		String titulo = "Cadastro de Produtos";
+		
+		model.addAttribute("titulo", titulo);
+		
+		return "cadastro";
+	}
+	
 	
 	@RequestMapping(value = "/logar", method = RequestMethod.POST)
 	public ModelAndView login(@ModelAttribute("usuario") Usuario usuario) {
@@ -71,6 +81,6 @@ public class IndexController {
 		
 		model.addObject("produto",	produto);
 	
-		return new ModelAndView("redirect:/index");
+		return new ModelAndView("redirect:/dashboard");
 	}
 }

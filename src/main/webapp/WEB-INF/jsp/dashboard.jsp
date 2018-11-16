@@ -11,11 +11,18 @@
 	crossorigin="anonymous">
 <title>Dashboard</title>
 </head>
-<body>
+<body style="width: 90%">
 	<center>
 		<h1>
 			<c:out value="${titulo}" />
 		</h1>
+		<div style="width: 90%">
+			<ul class="nav nav-tabs">
+			  <li role="presentation" class="active"><a href="#"><b>Dashboard</b></a></li>
+			  <li role="presentation"><a href="/cadastro"><b>Cadastrar Produto</b></a></li>
+			  <li role="presentation"><a href="/index"><b>Logout</b></a></li>
+			</ul>
+		</div>
 	</center>
 	<br>
 	<br>
@@ -25,6 +32,7 @@
 				<tr>
 					<th><b>Descrição</b></th>
 					<th><b>Preço</b></th>
+					<th><b>Quantidade</b></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,7 +41,8 @@
 				
 					<tr>
 						<td><c:out value="${item.descricao}"></c:out></td>
-						<td><c:out value="${item.preco}"></c:out></td>
+						<td><c:out value="R$ ${item.preco}"></c:out></td>
+						<td><c:out value="${item.quantidade}"></c:out></td>
 					</tr>
 					
 				</c:forEach>
