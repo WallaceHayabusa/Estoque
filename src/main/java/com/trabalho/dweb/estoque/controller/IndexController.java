@@ -28,8 +28,6 @@ public class IndexController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	private String warning = "";
-	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String index(Model model) {
 		
@@ -75,7 +73,7 @@ public class IndexController {
 	@RequestMapping(value = "/logar", method = RequestMethod.GET)
 	public ModelAndView login(@ModelAttribute("usuario") Usuario usuario) {
 		
-		ModelAndView model = new ModelAndView("index");
+		ModelAndView model = new ModelAndView("redirect:/dashboard");
 		
 		List<Usuario> usuariosCadastrados = usuarioService.getTodosUsuarios();
 		
@@ -85,15 +83,15 @@ public class IndexController {
 				if (usuarioCadastrado != null && usuario.getLogin().equals(usuarioCadastrado.getLogin()) && usuario.getSenha().equals(usuarioCadastrado.getSenha())) {
 					
 					model.addObject("warning", "Login realizado com sucesso. Bem vindo " + usuario.getLogin() + "!");
-					model.addObject("usuarioLogado", usuarioCadastrado.getLogin());
+					model.addObject("usuarioLogado", usuario.getLogin());
 
-					return new ModelAndView("redirect:/dashboard");
+					return model;
 				}
 			}
-			model.addObject(warning, "Não foi possível realizar o login.");
+			model.addObject("warning", "Não foi possível realizar o login.");
 		}
-		
-		return new ModelAndView();
+		model.setViewName("index");
+		return model;
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)

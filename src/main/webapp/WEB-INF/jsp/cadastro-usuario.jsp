@@ -18,10 +18,10 @@
 		<br> <br>
 		<form action='/index/salvar-usuario' method="post">
 			<label>Usuário:</label> <br> 
-			<input type="text" name="login">
+			<input type="text" name="login" maxlength="50">
 			<br> <br> 
 			<label>Senha:</label> <br> 
-			<input type="password" name="senha">
+			<input type="password" name="senha" maxlength="50">
 			<br> <br>
 			<button type="submit" class="btn btn-primary">Cadastrar</button>
 			<button type="button" class="btn btn-outline-primary" onClick="JavaScript:window.location='index';">Voltar</button>

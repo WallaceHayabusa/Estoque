@@ -15,13 +15,12 @@
 	<center>
 		<h1>${mensagem}</h1>
 		<br> 
-		${warning}
 		<br>
 		<form action='/index/logar' method="get">
 			<label>Usuário:</label> <br>
-			<input type="text" name="login"> <br> <br>
+			<input type="text" name="login" maxlength="50"> <br> <br>
 			<label>Senha:</label> <br>
-			<input type="password" name="senha"> <br> <br>
+			<input type="password" name="senha" maxlength="50"> <br> <br>
 			<button type="submit" class="btn btn-primary">Logar</button>
 		</form>
 		<br>

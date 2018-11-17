@@ -24,7 +24,7 @@
 	<br> 
 	<form action='/index/salvar' method='post'>
 		<label>Descrição:</label> <br>
-		<input type="text" name="descricao"> <br> <br>
+		<input type="text" name="descricao" maxlength="50"> <br> <br>
 		<label>Preço:</label> <br>
 		<input type="text" name="preco"> <br> <br>
 		<label>Quantidade:</label> <br>

@@ -20,13 +20,13 @@
 	<form action='/index/atualizar' method='post'>
 		<input type='hidden' id='id' name='id' value="${produto.id}">
 		<label>Descrição:</label> <br>
-		<input type="text" name="descricao" value="${produto.descricao}"> <br> <br>
+		<input type="text" name="descricao" value="${produto.descricao}" maxlength="50"> <br> <br>
 		<label>Preço:</label> <br>
-		<input type="text" name="preco" value="${produto.preco}"> <br> <br>
+		<input type="text" name="preco" value="${produto.preco}" maxlength="50"> <br> <br>
 		<label>Quantidade:</label> <br>
 		<input type="text" name="quantidade" value="${produto.quantidade}"><br> <br>
 		<button type="submit" class="btn btn-primary">Atualizar</button>
-		<button type="button" class="btn btn-outline-primary" onClick="JavaScript:window.location='dashboard';">Voltar</button>
+		<button type="button" class="btn btn-outline-primary" onClick="JavaScript:window.location='/dashboard';">Voltar</button>
 	</form>
 </center>
 </body>
