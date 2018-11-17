@@ -1,7 +1,6 @@
 package com.trabalho.dweb.estoque.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,6 +105,10 @@ public class IndexController {
 		return new ModelAndView("redirect:/dashboard");
 	}
 	
+//	@RequestMapping(value = "/editar",method = RequestMethod.PUT)
+//	public 
+	
+	
 	@RequestMapping(value = "/salvar-usuario", method = RequestMethod.POST)
 	public ModelAndView salvarUsuário(@ModelAttribute ("usuário") Usuario usuario) {
 		ModelAndView model = new ModelAndView("cadastro-usuario");
@@ -116,4 +119,5 @@ public class IndexController {
 		
 		return new ModelAndView("redirect:/index");
 	}
+	
 }

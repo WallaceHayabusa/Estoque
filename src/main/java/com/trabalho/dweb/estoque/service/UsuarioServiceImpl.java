@@ -34,13 +34,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario cadastrar(Usuario usuario) {
 		List<Usuario> usuariosCadastrados = usuarioRepository.findAll();
 		
-		if (!usuario.getLogin().equals("") && !usuario.getSenha().equals("")) {
-			
-			for(Usuario usuarioCadastrado : usuariosCadastrados) {
-				if (!usuariosCadastrados.isEmpty() && !usuario.getLogin().equals(usuarioCadastrado.getLogin())) {
-					System.out.println("Vai salvar");
-					return usuarioRepository.save(usuario);
-				}
+		if (usuariosCadastrados.isEmpty() && !usuario.getLogin().equals("") && !usuario.getSenha().equals("")) {
+			return usuarioRepository.save(usuario);
+		} 
+		
+		for(Usuario usuarioCadastrado : usuariosCadastrados) {
+			if (!usuariosCadastrados.isEmpty() || !usuario.getLogin().equals(usuarioCadastrado.getLogin())) {
+				System.out.println("Vai salvar");
+				return usuarioRepository.save(usuario);
 			}
 		}
 		
