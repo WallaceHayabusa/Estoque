@@ -8,11 +8,11 @@ public interface ProdutoService {
 	
 	public List<Produto> getTodosProdutos();
 	
-	public Produto cadastrarProduto(Produto produto);
+	public Produto cadastrar(Produto produto);
 
 	public Produto getProdutoPorId(Long produtoId);
 	
-	public Produto atualizarProduto(Long produtoId, Produto produtoAtualizado);
+	public Produto atualizar(Long produtoId, Produto produtoAtualizado);
 	
 	public void removerProduto(Long produtoId);
 }

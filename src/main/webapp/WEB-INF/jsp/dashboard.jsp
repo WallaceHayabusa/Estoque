@@ -11,7 +11,7 @@
 	crossorigin="anonymous">
 <title>Dashboard</title>
 </head>
-<body style="width: 90%">
+<body>
 	<center>
 		<h1>
 			<c:out value="${titulo}" />
@@ -21,6 +21,7 @@
 			  <li role="presentation" class="active"><a href="#"><b>Dashboard</b></a></li>
 			  <li role="presentation"><a href="/cadastro"><b>Cadastrar Produto</b></a></li>
 			  <li role="presentation"><a href="/index"><b>Logout</b></a></li>
+			  <label>Usuário logado: <c:out value="${usuario.login}"></c:out></label>
 			</ul>
 		</div>
 	</center>

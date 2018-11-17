@@ -20,7 +20,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto cadastrarProduto(Produto produto) {
+	public Produto cadastrar(Produto produto) {
 		return produtoRepository.save(produto);
 	}
 
@@ -42,7 +42,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto atualizarProduto(Long produtoId, Produto produtoAtualizado) {
+	public Produto atualizar(Long produtoId, Produto produtoAtualizado) {
 		Produto produto = produtoRepository.findOne(produtoId);
 
 		try {

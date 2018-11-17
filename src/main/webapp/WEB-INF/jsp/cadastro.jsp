@@ -30,7 +30,6 @@
 		<label>Quantidade:</label> <br>
 		<input type="text" name="quantidade"><br> <br>
 		<button type="submit" class="btn btn-primary">Cadastrar</button>
-		<!-- <button type="submit" class="btn btn-primary">Voltar</button> -->
 	</form> <br> <br>
 </center>
 </body>

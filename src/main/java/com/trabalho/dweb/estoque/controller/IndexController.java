@@ -1,5 +1,8 @@
 package com.trabalho.dweb.estoque.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,8 @@ public class IndexController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	private String warning = "";
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String index(Model model) {
@@ -55,32 +60,60 @@ public class IndexController {
 		return "cadastro";
 	}
 	
+	@RequestMapping(value = "/cadastro-usuario", method = RequestMethod.GET)
+	public String cadastroUsuário(Model model) {
+		
+		String mensagem = "Cadastro de Usuário";
+		
+		model.addAttribute("mensagem", mensagem);
+		
+		return "cadastro-usuario";
+	}
 	
-	@RequestMapping(value = "/logar", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/logar", method = RequestMethod.GET)
 	public ModelAndView login(@ModelAttribute("usuario") Usuario usuario) {
+		
 		ModelAndView model = new ModelAndView("index");
 		
-		Usuario usuarioCadastrado = usuarioService.getUsuarioPorId(1L);
-
-		if (usuario.getLogin().equals(usuarioCadastrado.getLogin()) && usuario.getSenha().equals(usuarioCadastrado.getSenha())) {
-			model.addObject("usuario", usuario);
-			model.addObject("warning", "Login realizado com sucesso. Bem vindo " + usuario.getLogin() + "!");
+		List<Usuario> usuariosCadastrados = usuarioService.getTodosUsuarios();
+		
+		if (!usuariosCadastrados.isEmpty() || !usuario.getLogin().equals("") && !usuario.getSenha().equals("")) {
 			
-			return new ModelAndView("redirect:/dashboard");
+			for (Usuario usuarioCadastrado : usuariosCadastrados) {
+				if (usuarioCadastrado != null && usuario.getLogin().equals(usuarioCadastrado.getLogin()) && usuario.getSenha().equals(usuarioCadastrado.getSenha())) {
+					
+					model.addObject("warning", "Login realizado com sucesso. Bem vindo " + usuario.getLogin() + "!");
+					model.addObject("usuarioLogado", usuarioCadastrado.getLogin());
+
+					return new ModelAndView("redirect:/dashboard");
+				}
+			}
+			model.addObject(warning, "Não foi possível realizar o login.");
 		}
 		
-		model.addObject("warning", "Não foi possível realizar o login.");
-		return new ModelAndView("redirect:/index");
+		return new ModelAndView();
 	}
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.POST)
 	public ModelAndView salvar(@ModelAttribute("produto") Produto produto) {
 		ModelAndView model = new ModelAndView("index");
 		
-		produtoService.cadastrarProduto(produto);
+		produtoService.cadastrar(produto);
 		
 		model.addObject("produto",	produto);
 	
 		return new ModelAndView("redirect:/dashboard");
+	}
+	
+	@RequestMapping(value = "/salvar-usuario", method = RequestMethod.POST)
+	public ModelAndView salvarUsuário(@ModelAttribute ("usuário") Usuario usuario) {
+		ModelAndView model = new ModelAndView("cadastro-usuario");
+		
+		usuarioService.cadastrar(usuario);
+		
+		model.addObject("usuario", usuario);
+		
+		return new ModelAndView("redirect:/index");
 	}
 }

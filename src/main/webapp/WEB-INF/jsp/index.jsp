@@ -15,16 +15,18 @@
 	<center>
 		<h1>${mensagem}</h1>
 		<br> 
-		<c:out value="${warning}" />
+		${warning}
 		<br>
-	
-		<form action='/index/logar' method="post">
+		<form action='/index/logar' method="get">
 			<label>Usuário:</label> <br>
 			<input type="text" name="login"> <br> <br>
 			<label>Senha:</label> <br>
 			<input type="password" name="senha"> <br> <br>
 			<button type="submit" class="btn btn-primary">Logar</button>
 		</form>
+		<br>
+		<br>
+		<label>Ainda não possui cadastro? Cadastre-se <a href="/cadastro-usuario">aqui!</a></label>
 	</center>
 </body>
 </html>
