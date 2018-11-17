@@ -25,10 +25,12 @@ public class Produto {
 	@Column(name = "quantidade", nullable = false)
 	private int quantidade;
 	
-	public Produto(String descricao, Double preco) {
+	public Produto(Long id, String descricao, Double preco, int quantidade) {
 		super();
+		this.id = id;
 		this.descricao = descricao;
 		this.preco = preco;
+		this.quantidade = quantidade;
 	}
 
 	public Produto() {

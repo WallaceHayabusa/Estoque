@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.trabalho.dweb.estoque.model.Produto;
@@ -105,8 +107,34 @@ public class IndexController {
 		return new ModelAndView("redirect:/dashboard");
 	}
 	
-//	@RequestMapping(value = "/editar",method = RequestMethod.PUT)
-//	public 
+	@RequestMapping(value = "/editar/{id}", method = RequestMethod.GET)
+	public ModelAndView editar(@PathVariable("id") Long idProduto) {
+		
+		ModelAndView model = new ModelAndView("edicao");
+		
+		Produto produto = produtoService.getProdutoPorId(idProduto);
+		
+		model.addObject("produto", produto);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/excluir/{id}", method = RequestMethod.GET)
+	public ModelAndView excluir(@PathVariable("id") Long idProduto) {
+		produtoService.removerProduto(idProduto);
+		return new ModelAndView("redirect:/dashboard");
+	}
+	
+	@RequestMapping(value = "/atualizar", method = RequestMethod.POST)
+	public ModelAndView atualizar(@RequestParam("id") Long idProduto, @RequestParam("descricao") String descricao, @RequestParam("preco") Double preco, @RequestParam("quantidade") int quantidade) {
+		
+		Produto produtoAtualizado = produtoService.getProdutoPorId(idProduto);
+		produtoAtualizado.setDescricao(descricao).setPreco(preco).setQuantidade(quantidade);
+		
+		produtoService.atualizar(idProduto, produtoAtualizado);
+		
+		return new ModelAndView("redirect:/dashboard");
+	}
 	
 	
 	@RequestMapping(value = "/salvar-usuario", method = RequestMethod.POST)
