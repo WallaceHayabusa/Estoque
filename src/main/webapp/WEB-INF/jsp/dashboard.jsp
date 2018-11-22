@@ -34,6 +34,8 @@
 					<th><b>Descrição</b></th>
 					<th><b>Preço</b></th>
 					<th><b>Quantidade</b></th>
+					<th><b>Quantidade Mínima</b></th>
+					<th><b>Quantidade Máxima</b></th>
 					<th><b>Editar</b></th>
 					<th><b>Excluir</b></th>
 				</tr>
@@ -46,6 +48,8 @@
 						<td><c:out value="${item.descricao}"></c:out></td>
 						<td><c:out value="R$ ${item.preco}"></c:out></td>
 						<td><c:out value="${item.quantidade}"></c:out></td>
+						<td><c:out value="${item.quantidadeMinima}"></c:out></td>
+						<td><c:out value="${item.quantidadeMaxima}"></c:out></td>
 						<td>
 				             <a href="/editar/${item.id}">
 				             	<button type="submit" class="btn btn-primary">Editar</button>

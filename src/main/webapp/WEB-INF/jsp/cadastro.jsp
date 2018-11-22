@@ -25,10 +25,19 @@
 	<form action='/index/salvar' method='post'>
 		<label>Descrição:</label> <br>
 		<input type="text" name="descricao" maxlength="50"> <br> <br>
+		
 		<label>Preço:</label> <br>
 		<input type="text" name="preco"> <br> <br>
+		
 		<label>Quantidade:</label> <br>
 		<input type="text" name="quantidade"><br> <br>
+		
+		<label>Quantidade Mínima:</label> <br>
+		<input type="number" name="quantidadeMinima"><br> <br>
+		
+		<label>Quantidade Máxima:</label> <br>
+		<input type="number" name="quantidadeMaxima"><br> <br>
+		
 		<button type="submit" class="btn btn-primary">Cadastrar</button>
 	</form>
 </center>

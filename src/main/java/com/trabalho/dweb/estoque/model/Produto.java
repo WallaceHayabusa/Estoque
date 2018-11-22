@@ -25,12 +25,20 @@ public class Produto {
 	@Column(name = "quantidade", nullable = false)
 	private int quantidade;
 	
-	public Produto(Long id, String descricao, Double preco, int quantidade) {
+	@Column(name = "quantidadeMinima", nullable = false)
+	private int quantidadeMinima;
+
+	@Column(name = "quantidadeMaxima", nullable = false)
+	private int quantidadeMaxima;
+	
+	public Produto(Long id, String descricao, Double preco, int quantidade, int quantidadeMinima, int quantidadeMaxima) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.quantidade = quantidade;
+		this.quantidadeMinima = quantidadeMinima;
+		this.quantidadeMaxima = quantidadeMaxima;
 	}
 
 	public Produto() {
@@ -70,6 +78,24 @@ public class Produto {
 
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	public int getQuantidadeMinima() {
+		return quantidadeMinima;
+	}
+	
+	public Produto setQuantidadeMinima(int quantidadeMinima) {
+		this.quantidadeMinima = quantidadeMinima;
+		return this;
+	}
+	
+	public int getQuantidadeMaxima() {
+		return quantidadeMaxima;
+	}
+
+	public Produto setQuantidadeMaxima(int quantidadeMaxima) {
+		this.quantidadeMaxima = quantidadeMaxima;
+		return this;
 	}
 
 	@Override
