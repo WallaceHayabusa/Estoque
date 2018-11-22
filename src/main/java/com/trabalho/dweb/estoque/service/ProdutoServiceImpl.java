@@ -24,7 +24,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 		if (isQuantidadeExata(produto) && !isProdutoNoBanco(produto)) {
 			return produtoRepository.save(produto);
 		}
-		System.out.println("Produto já existente na base de dados! Não foi possível realizar o cadastro");
+		System.out.println("Não foi possível realizar o cadastro");
 		return null;
 	}
 
@@ -50,12 +50,13 @@ public class ProdutoServiceImpl implements ProdutoService {
 		Produto produto = produtoRepository.findOne(produtoId);
 
 		try {
-			if (produto != null && isQuantidadeExata(produtoAtualizado)) {
+			if (produto != null && produtoAtualizado.getQuantidade() >= produto.getQuantidadeMinima() 
+					&& produtoAtualizado.getQuantidade() <= produto.getQuantidadeMaxima()) {
 				produto.setPreco(produtoAtualizado.getPreco()).setDescricao(produtoAtualizado.getDescricao());
 				produtoRepository.save(produto);
 				System.out.println("Produto " + produtoId + " atualizado com sucesso.");
 			} else {
-				System.out.println("Produto de id " + produtoId + "não existe.");
+				System.out.println("Produto de id " + produtoId + "não foi atualizado.");
 			}
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.getMessage());
@@ -83,8 +84,12 @@ public class ProdutoServiceImpl implements ProdutoService {
 	private boolean isQuantidadeExata(Produto produto) {
 		List<Produto> produtosCadastrados = getTodosProdutos();
 		
+		if (produtosCadastrados.isEmpty()) {
+			return true;
+		}
+		
 		for (Produto produtoCadastrado : produtosCadastrados) {
-			if (produto.getDescricao().equals(produtoCadastrado.getDescricao()) || produto.getQuantidade() >= produtoCadastrado.getQuantidadeMinima() 
+			if (produto.getQuantidade() >= produtoCadastrado.getQuantidadeMinima() 
 					&& produto.getQuantidade() <= produtoCadastrado.getQuantidadeMaxima()) {
 				return true;
 			}
@@ -96,6 +101,10 @@ public class ProdutoServiceImpl implements ProdutoService {
 	private boolean isProdutoNoBanco(Produto produto) {
 		
 		List<Produto> produtosCadastrados = produtoRepository.findAll();
+		
+		if (produtosCadastrados.isEmpty()) {
+			return false;
+		}
 		
 		for (Produto produtoCadastrado : produtosCadastrados) {
 			if (produto.getDescricao().equals(produtoCadastrado.getDescricao())) {
