@@ -46,20 +46,21 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto atualizar(Long produtoId, Produto produtoAtualizado) {
+	public Produto atualizar(Long produtoId, Produto produtoAtualizado) throws Exception {
+		
 		Produto produto = produtoRepository.findOne(produtoId);
 
-		try {
-			if (produto != null && produtoAtualizado.getQuantidade() >= produto.getQuantidadeMinima() 
-					&& produtoAtualizado.getQuantidade() <= produto.getQuantidadeMaxima()) {
-				produto.setPreco(produtoAtualizado.getPreco()).setDescricao(produtoAtualizado.getDescricao());
-				produtoRepository.save(produto);
-				System.out.println("Produto " + produtoId + " atualizado com sucesso.");
-			} else {
-				System.out.println("Produto de id " + produtoId + "não foi atualizado.");
-			}
-		} catch (Exception e) {
-			System.out.println("Erro: " + e.getMessage());
+		produto.setDescricao(produtoAtualizado.getDescricao()).setPreco(produtoAtualizado.getPreco()).setQuantidade(produtoAtualizado.getQuantidade());
+		
+		if (produto != null && produtoAtualizado.getQuantidade() >= produto.getQuantidadeMinima()
+				&& produtoAtualizado.getQuantidade() <= produto.getQuantidadeMaxima()) {
+			
+			produto.setPreco(produtoAtualizado.getPreco()).setDescricao(produtoAtualizado.getDescricao());
+			produtoRepository.save(produto);
+			
+			System.out.println("Produto " + produtoId + " atualizado com sucesso.");
+		} else {
+			throw new Exception();
 		}
 
 		return produto;
@@ -80,38 +81,38 @@ public class ProdutoServiceImpl implements ProdutoService {
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
-	
+
 	private boolean isQuantidadeExata(Produto produto) {
 		List<Produto> produtosCadastrados = getTodosProdutos();
-		
+
 		if (produtosCadastrados.isEmpty()) {
 			return true;
 		}
-		
+
 		for (Produto produtoCadastrado : produtosCadastrados) {
-			if (produto.getQuantidade() >= produtoCadastrado.getQuantidadeMinima() 
+			if (produto.getQuantidade() >= produtoCadastrado.getQuantidadeMinima()
 					&& produto.getQuantidade() <= produtoCadastrado.getQuantidadeMaxima()) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	private boolean isProdutoNoBanco(Produto produto) {
-		
+
 		List<Produto> produtosCadastrados = produtoRepository.findAll();
-		
+
 		if (produtosCadastrados.isEmpty()) {
 			return false;
 		}
-		
+
 		for (Produto produtoCadastrado : produtosCadastrados) {
 			if (produto.getDescricao().equals(produtoCadastrado.getDescricao())) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 

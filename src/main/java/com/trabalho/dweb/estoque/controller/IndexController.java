@@ -90,7 +90,7 @@ public class IndexController {
 			}
 			model.addObject("warning", "Não foi possível realizar o login.");
 		}
-		model.setViewName("index");
+		model.setViewName("erroLogin");
 		return model;
 	}
 	
@@ -125,13 +125,20 @@ public class IndexController {
 	
 	@RequestMapping(value = "/atualizar", method = RequestMethod.POST)
 	public ModelAndView atualizar(@RequestParam("id") Long idProduto, @RequestParam("descricao") String descricao, @RequestParam("preco") Double preco, @RequestParam("quantidade") int quantidade) {
+		ModelAndView model = new ModelAndView("redirect:/dashboard");
 		
-		Produto produtoAtualizado = produtoService.getProdutoPorId(idProduto);
+		Produto produtoAtualizado = new Produto();
 		produtoAtualizado.setDescricao(descricao).setPreco(preco).setQuantidade(quantidade);
 		
-		produtoService.atualizar(idProduto, produtoAtualizado);
+		try {
+			produtoService.atualizar(idProduto, produtoAtualizado);
+			return model;
+		} catch (Exception e) {
+			System.out.println("Erro: O produto " + idProduto + " não pode ser atualizado!");
+			model.setViewName("erroEdicao");
+			return model;
+		}
 		
-		return new ModelAndView("redirect:/dashboard");
 	}
 	
 	

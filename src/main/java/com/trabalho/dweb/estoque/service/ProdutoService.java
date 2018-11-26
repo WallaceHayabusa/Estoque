@@ -12,7 +12,7 @@ public interface ProdutoService {
 
 	public Produto getProdutoPorId(Long produtoId);
 	
-	public Produto atualizar(Long produtoId, Produto produtoAtualizado);
+	public Produto atualizar(Long produtoId, Produto produtoAtualizado) throws Exception;
 	
 	public void removerProduto(Long produtoId);
 }
