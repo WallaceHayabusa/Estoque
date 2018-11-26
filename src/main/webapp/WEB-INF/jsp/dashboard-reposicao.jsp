@@ -18,9 +18,9 @@
 		</h1>
 		<div style="width: 90%">
 			<ul class="nav nav-tabs">
-			  <li role="presentation" class="active"><a href="#"><b>Dashboard</b></a></li>
+			  <li role="presentation"><a href="#"><b>Dashboard</b></a></li>
 			  <li role="presentation"><a href="/cadastro"><b>Cadastrar Produto</b></a></li>
-			  <li role="presentation"><a href="/dashboard-reposicao"><b>Dashboard de Reposição</b></a></li>
+			  <li role="presentation" class="active"><a href="/dashboard-reposicao"><b>Dashboard de Reposição</b></a></li>
 			  <li role="presentation"><a href="/index"><b>Logout</b></a></li>
 			  <label>Usuário logado: <c:out value='<%=request.getParameter("usuarioLogado")%>'></c:out></label>
 			</ul>

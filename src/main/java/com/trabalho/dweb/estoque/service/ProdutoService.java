@@ -8,6 +8,8 @@ public interface ProdutoService {
 	
 	public List<Produto> getTodosProdutos();
 	
+	public List<Produto> getTodosProdutosComQuantidadeMinimaOuMaxima();
+	
 	public Produto cadastrar(Produto produto);
 
 	public Produto getProdutoPorId(Long produtoId);

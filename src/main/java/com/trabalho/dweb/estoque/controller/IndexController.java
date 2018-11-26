@@ -49,6 +49,17 @@ public class IndexController {
 		return "dashboard";
 	}
 	
+	@RequestMapping(value = "/dashboard-reposicao", method = RequestMethod.GET)
+	public String dashboardReposicao(Model model) {
+		
+		String titulo = "Dashboard de Reposição";
+		
+		model.addAttribute("titulo", titulo);
+		model.addAttribute("produtos", produtoService.getTodosProdutosComQuantidadeMinimaOuMaxima());
+		
+		return "dashboard-reposicao";
+	}
+	
 	@RequestMapping(value = "/cadastro", method = RequestMethod.GET)
 	public String cadastro(Model model) {
 		

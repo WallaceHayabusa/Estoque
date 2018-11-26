@@ -1,9 +1,14 @@
 package com.trabalho.dweb.estoque.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.trabalho.dweb.estoque.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
+	@Query("FROM Produto WHERE quantidade = quantidadeMinima")
+	public List<Produto> getTodosProdutosComQuantidadeMinimaOuMaxima();
 }

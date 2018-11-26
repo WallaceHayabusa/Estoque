@@ -18,6 +18,11 @@ public class ProdutoServiceImpl implements ProdutoService {
 	public List<Produto> getTodosProdutos() {
 		return produtoRepository.findAll();
 	}
+	
+	@Override
+	public List<Produto> getTodosProdutosComQuantidadeMinimaOuMaxima() {
+		return produtoRepository.getTodosProdutosComQuantidadeMinimaOuMaxima();
+	}
 
 	@Override
 	public Produto cadastrar(Produto produto) {
