@@ -17,6 +17,7 @@
 		<ul class="nav nav-tabs">
 		  <li role="presentation"><a href="/dashboard"><b>Dashboard</b></a></li>
 		  <li role="presentation" class="active"><a href="#"><b>Cadastrar Produto</b></a></li>
+		  <li role="presentation"><a href="/dashboard-reposicao"><b>Dashboard de Reposição</b></a></li>
 		  <li role="presentation"><a href="/index"><b>Logout</b></a></li>
 		</ul>
 	</div>
