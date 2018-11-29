@@ -37,8 +37,6 @@
 					<th><b>Quantidade</b></th>
 					<th><b>Quantidade Mínima</b></th>
 					<th><b>Quantidade Máxima</b></th>
-					<th><b>Editar</b></th>
-					<th><b>Excluir</b></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -51,16 +49,6 @@
 						<td><c:out value="${item.quantidade}"></c:out></td>
 						<td><c:out value="${item.quantidadeMinima}"></c:out></td>
 						<td><c:out value="${item.quantidadeMaxima}"></c:out></td>
-						<td>
-				             <a href="/editar/${item.id}">
-				             	<button type="submit" class="btn btn-primary">Editar</button>
-				             </a>
-			            </td>
-			            <td>
-			           		<a href="/excluir/${item.id}">
-			           			<button type="submit" class="btn btn-primary">Excluir</button>
-		           			</a>
-			          	</td>
 					</tr>
 					
 				</c:forEach>
