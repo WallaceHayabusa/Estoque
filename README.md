@@ -9,7 +9,7 @@ A fim de estar rodando o projeto, algumas ações são necessárias:
 
 3º - No <b>eclipse</b>, rodar o projeto.
 
-4º - No navegador de sua preferência, na barra de endereço, inserir: <b>localhost:8080</b>
+4º - No navegador de sua preferência, na barra de endereço, inserir: <b>localhost:8080</b>.
 
 ## Observação 
 Nenhuma tabela precisa ser criada no banco. 
