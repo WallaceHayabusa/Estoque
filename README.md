@@ -7,7 +7,9 @@ A fim de estar rodando o projeto, algumas ações são necessárias:
 
 2º - No MySQL Workbench, criar o database de nome "trabalho".
 
-3º - No eclipse, rodar o projeto. 
+3º - No eclipse, rodar o projeto.
+
+4º - No navegador de sua preferência, na barra de endereço, inserir: <b>localhost:8080</b>
 
 ## Observação 
 Nenhuma tabela precisa ser criada no banco. 
