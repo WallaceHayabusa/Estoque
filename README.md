@@ -3,11 +3,11 @@
 ## Instruções para rodar o projeto
 A fim de estar rodando o projeto, algumas ações são necessárias:
 
-1º - Importar no eclipse o projeto como um projeto Maven.
+1º - Importar no <b>eclipse</b> o projeto como um projeto <b>Maven</b>.
 
-2º - No MySQL Workbench, criar o database de nome "trabalho".
+2º - No <b>MySQL Workbench</b>, criar o database de nome <b>"trabalho"</b>.
 
-3º - No eclipse, rodar o projeto.
+3º - No <b>eclipse</b>, rodar o projeto.
 
 4º - No navegador de sua preferência, na barra de endereço, inserir: <b>localhost:8080</b>
 
